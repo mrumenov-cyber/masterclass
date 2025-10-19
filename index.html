@@ -20,7 +20,6 @@
     .offer a{align-self:flex-start;margin-top:10px;background:#7c5cff;color:#fff;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:600;transition:background .2s}
     .offer a:hover{background:#6848e8}
     footer{text-align:center;padding:20px;color:#777;font-size:14px}
-      /* pulse effect for bonus box */
     #bonus-box{transition:box-shadow .3s, transform .2s}
     .pulse{animation:pulse 1.2s ease-out 2}
     @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(124,92,255,.35)}70%{box-shadow:0 0 0 18px rgba(124,92,255,0)}100%{box-shadow:0 0 0 0 rgba(124,92,255,0)}}
@@ -92,12 +91,12 @@
   </section>
 
   <section id="consultation" style="max-width:900px;width:100%;margin:0 0 50px 0">
-<div style="background:#eaf4ff;border:1px solid #c6e2ff;border-radius:14px;padding:22px 24px;text-align:center;line-height:1.45">
-<div style="font-weight:700;font-size:20px;margin-bottom:6px">Still not sure?</div>
-<div style="margin-bottom:12px">Book a short consultation call with me 💬</div>
-<a href="https://calendly.com/feminine-enchantress/30min/" target="_blank" rel="noopener" style="background:#0077ff;color:#fff;padding:12px 20px;border-radius:10px;text-decoration:none;font-weight:600;display:inline-block">Book your 30-min Call →</a>
-</div>
-</section>
+    <div style="background:#eaf4ff;border:1px solid #c6e2ff;border-radius:14px;padding:22px 24px;text-align:center;line-height:1.45">
+      <div style="font-weight:700;font-size:20px;margin-bottom:6px">Still not sure?</div>
+      <div style="margin-bottom:12px">Book a short consultation call with me 💬</div>
+      <a href="https://calendly.com/feminine-enchantress/30min/" target="_blank" rel="noopener" style="background:#0077ff;color:#fff;padding:12px 20px;border-radius:10px;text-decoration:none;font-weight:600;display:inline-block">Book your 30-min Call →</a>
+    </div>
+  </section>
 
   <footer>
     Bonuses and access close when the timer hits zero 💜
@@ -105,20 +104,23 @@
 
   <script src="https://player.vimeo.com/api/player.js"></script>
   <script>
-    const EXPIRY_ISO = '2025-10-25T20:00'; // Change this to your real deadline
+    // HARD-CODED ISO EXPIRY (Europe/Berlin local time, no timezone suffix)
+    // Today is 2025-10-19 13:00 → +6 days +3.5 hours = 2025-10-25 16:30
+    const EXPIRY_ISO = '2025-10-25T16:30';
     const expiryTs = new Date(EXPIRY_ISO).getTime();
+
     const $count = document.getElementById('countdown');
     const $overlay = document.getElementById('expired-overlay');
     const $ctaLive = document.getElementById('cta-live');
     const $iframe = document.getElementById('vimeo-iframe');
     const $bonusText = document.getElementById('bonus-text');
     const $bonusBox = document.getElementById('bonus-box');
+
     let lastShownBonus = null;
     let player;
-
     try { player = new Vimeo.Player($iframe); } catch(e){}
 
-    function pad(n){return String(n).padStart(2,'0')}
+    function pad(n){ return String(n).padStart(2,'0'); }
     function formatRemaining(ms){
       if(ms <= 0) return '00:00:00';
       const s = Math.floor(ms/1000);
@@ -126,22 +128,24 @@
       const h = Math.floor((s%86400)/3600);
       const m = Math.floor((s%3600)/60);
       const sec = s%60;
-      return (d>0? d + 'd ': '') + pad(h)+':'+pad(m)+':'+pad(sec);
+      return (d>0? d + 'd ' : '') + pad(h)+':'+pad(m)+':'+pad(sec);
     }
 
-    function updateBonus(daysRemaining){
-      // Map days remaining to bonus days:
-      // default 10, then 5→9, 4→8, 3→7, 2→6, 1→5, 0→4
-      let shownBonus = 10;
-      if(daysRemaining <= 5){
-        const map = {5:9,4:8,3:7,2:6,1:5,0:4};
-        shownBonus = map[daysRemaining] ?? (daysRemaining < 0 ? 0 : 10);
-      }
+    // Start bonus at 11 and drop by 1 per day that expires:
+    // daysLeft (ceil) : 7+→11, 6→10, 5→9, 4→8, 3→7, 2→6, 1→5, 0→4
+    function updateBonus(remainingMs){
+      const DAY_MS = 24*60*60*1000;
+      const daysLeft = Math.max(0, Math.ceil(remainingMs / DAY_MS));
+      let shownBonus = Math.min(11, daysLeft + 4); // cap at 11
+      shownBonus = Math.max(4, shownBonus);        // floor at 4 on last day/expired
+
       if(shownBonus !== lastShownBonus){
-        $bonusText.innerHTML = `Sign up <strong>today</strong> and get <strong>${shownBonus} Extra Days of 24/7 Telegram Group Mentoring</strong> on me.<br/>The faster you join, the more days you get… <em>the container closes on 30. October</em>.`;
-        // trigger pulse
+        $bonusText.innerHTML =
+          `Sign up <strong>today</strong> and get <strong>${shownBonus} Extra Days of 24/7 Telegram Group Mentoring</strong> on me.<br/>` +
+          `The faster you join, the more days you get… <em>the container closes on 30. October</em>.`;
+        // pulse animation
         $bonusBox.classList.remove('pulse');
-        void $bonusBox.offsetWidth; // reflow to restart animation
+        void $bonusBox.offsetWidth;
         $bonusBox.classList.add('pulse');
         lastShownBonus = shownBonus;
       }
@@ -150,19 +154,23 @@
     function update(){
       const remaining = expiryTs - Date.now();
       const expired = remaining <= 0;
-      const daysRemaining = Math.floor(remaining / (1000*60*60*24));
-      updateBonus(daysRemaining);
+
+      updateBonus(remaining);
+
       if(expired){
         $count.textContent = 'Expired';
         $overlay.style.display = 'flex';
         $ctaLive.style.display = 'none';
-        if(player){ player.pause().catch(()=>{}).finally(()=>player.unload && player.unload()); }
+        if(player){
+          player.pause().catch(()=>{}).finally(()=>{ if(player.unload) player.unload(); });
+        }
       } else {
         $count.textContent = formatRemaining(remaining);
       }
     }
+
     update();
-    setInterval(update,1000);
+    setInterval(update, 1000);
   </script>
 </body>
 </html>
