@@ -104,10 +104,11 @@
 
   <script src="https://player.vimeo.com/api/player.js"></script>
   <script>
-    // HARD-CODED ISO EXPIRY (Europe/Berlin local time, no timezone suffix)
-    // Today is 2025-10-19 13:00 → +6 days +3.5 hours = 2025-10-25 16:30
-    const EXPIRY_ISO = '2025-10-25T16:30';
-    const expiryTs = new Date(EXPIRY_ISO).getTime();
+  
+// HARD-CODED ISO EXPIRY (Europe/Berlin local time, CET)
+// Ends on 2025-10-30 23:59:59
+const EXPIRY_ISO = '2025-10-30T23:59:59';
+const expiryTs = new Date(EXPIRY_ISO).getTime();
 
     const $count = document.getElementById('countdown');
     const $overlay = document.getElementById('expired-overlay');
