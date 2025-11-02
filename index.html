@@ -61,7 +61,7 @@
       background:rgba(0,0,0,.8);backdrop-filter:blur(6px);color:#fff;text-align:center;padding:20px
     }
 
-    /* Reveal section */
+    /* Show me more */
     .reveal-wrap{
       max-width:1000px;width:100%;text-align:center;margin-bottom:20px;
     }
@@ -73,21 +73,6 @@
     }
     .reveal-btn:hover{background:var(--purple-dark)}
     .reveal-btn:active{transform:translateY(1px)}
-
-    /* Unlock panel (shown after click, before unlock) */
-    .unlock-panel{
-      max-width:1000px;width:100%;margin:0 0 26px;
-      background:#fff3ff;border:1px solid #f3d3ff;border-radius:14px;
-      padding:16px 18px;display:none;
-    }
-    .unlock-panel h3{
-      margin:0 0 4px;font-size:16px;font-weight:800;color:#4d2048;
-    }
-    .unlock-panel p{margin:4px 0 10px;color:#5a3054}
-    .unlock-timer{
-      display:inline-block;background:#fff;border:1px solid #f7caff;
-      border-radius:999px;padding:6px 14px;font-weight:700;color:#4d2048;
-    }
 
     /* offers hidden */
     .hidden-offers{display:none;}
@@ -207,10 +192,12 @@
     <div class="deadline">Enrollment is open until 05.11</div>
   </header>
 
+  <!-- Video -->
   <section class="video-wrapper">
     <iframe id="vimeo-iframe" src="https://player.vimeo.com/video/1132171278?h=dfb7bc5b68&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-        frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
-        style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Get Married in 1 Year"></iframe>
+        frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+        style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Get Married in 1 Year">
+    </iframe>
 
     <div id="expired-overlay" class="expired">
       <div>
@@ -220,29 +207,142 @@
     </div>
   </section>
 
+  <!-- Show-me-more step -->
   <section class="reveal-wrap">
     <button id="reveal-btn" class="reveal-btn">Show me more 💗</button>
   </section>
 
-  <section id="unlock-panel" class="unlock-panel">
-    <h3>Stay with me a bit longer 💕</h3>
-    <p>To protect the container and make sure you watch the teaching first, the details, bonuses, and application links unlock after 15 minutes.</p>
-    <div>Time until unlock:</div>
-    <div id="unlock-timer" class="unlock-timer">15:00</div>
-  </section>
-
-  <!-- Hidden content (offers + testimonials + book call) -->
+  <!-- EVERYTHING BELOW IS INITIALLY HIDDEN (offers + testimonials + book call) -->
   <div id="offers-wrapper" class="hidden-offers">
-    <!-- your offers and testimonials unchanged -->
+    <!-- Packages -->
+    <section class="tiers" id="cta-live">
+      <!-- SILVER -->
+      <div class="card silver">
+        <div class="title-wrap">
+          <h2><span class="badge silver">SILVER PACKAGE</span> Get Married in 1 Year — Silver</h2>
+          <div class="crown" aria-hidden="true"></div>
+        </div>
+        <div class="subtitle">Structured guidance, deep feminine shifts, and a supportive circle to keep you consistent and inspired.</div>
+
+        <div class="features">
+          <div class="why-box">
+            What you receive inside Silver:
+            <ul style="margin:8px 0 0 18px">
+              <li><strong>✨ 3 months inside a guided group coaching container</strong> — designed to build lasting confidence, magnetic feminine energy, and deep emotional safety.</li>
+              <li><strong>💬 Wednesday is our sacred “Support Day” on Telegram</strong> — your space to be seen, heard, and guided through anything that comes up, with personal feedback and loving support.</li>
+              <li><strong>🎥 3 LIVE Zoom calls</strong> (one per month) — for transformation, clarity, and integration that help you embody everything you’re learning with ease.</li>
+              <li><strong>❤️ We help you vet men</strong> — so you no longer waste time or energy on unavailable men, even if you used to attract them before.</li>
+            </ul>
+          </div>
+
+          <ul style="margin:12px 0 0 18px">
+            <li>Learn emotional communication that evokes pursuit and care</li>
+            <li>Rebuild trust and self-worth after disappointment</li>
+            <li>Meet like-minded women who share your values and goals</li>
+            <li>Steady guidance that keeps you grounded, feminine, and hopeful</li>
+          </ul>
+        </div>
+
+        <div class="bottom-cta">
+          <div class="divider">Choose your plan</div>
+          <div class="cta-row">
+            <a class="btn" href="https://stan.store/feminine_dating/p/get-married-in-1-year-silver" target="_blank" rel="noopener">
+              €1,111 Pay in Full →
+            </a>
+            <a class="btn alt" href="https://stan.store/feminine_dating/p/get-married-in-1-year-silver--in-4-instalments" target="_blank" rel="noopener">
+              4 × €333 →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- GOLD (VIP) -->
+      <div class="card gold">
+        <div class="title-wrap">
+          <h2><span class="badge gold">GOLD PACKAGE</span> Get Married in 1 Year — Gold (VIP)</h2>
+          <div class="crown" aria-hidden="true"></div>
+        </div>
+        <div class="subtitle">Premium access, high-touch mentoring, and powerful momentum — for women ready to be fully supported and accelerated.</div>
+
+        <div class="features">
+          <div class="why-box gold-why">
+            What you receive inside Gold:
+            <ul style="margin:8px 0 0 18px">
+              <li><strong>✨ Three months inside an intimate group VIP container</strong> — a sacred space designed for rapid transformation, deep emotional safety, and tangible results.</li>
+              <li><strong>💬 24/7 Telegram support</strong> from me and my married team — personalised feedback, emotional guidance, and grounded direction whenever you need it most.</li>
+              <li><strong>🎥 8 LIVE Zoom calls</strong> (every second week) — for coaching, strategy, and energetic calibration that keep you inspired, focused, and magnetic.</li>
+              <li><strong>❤️ We vet men for you</strong> — offering real-time protection, feedback, and clarity as you date, so you never waste energy on unavailable men again.</li>
+              <li><strong>🌸 Limited spots</strong> — to preserve depth, intimacy, and the level of personal attention that true transformation requires.</li>
+            </ul>
+          </div>
+
+          <ul style="margin:12px 0 0 18px">
+            <li>Clarity on your values, vision, and non-negotiables</li>
+            <li>Real-time red-flag protection and emotional calibration</li>
+            <li>Scripts, communication frameworks & emotional tools</li>
+            <li>Weekly action plans to move forward with ease</li>
+          </ul>
+        </div>
+
+        <div class="bottom-cta">
+          <div class="divider">Choose your plan</div>
+          <div class="cta-row">
+            <a class="btn gold" href="https://stan.store/feminine_dating/p/your-path-to-your-divine-masculine-provider" target="_blank" rel="noopener">
+              €2,222 Pay in Full →
+            </a>
+            <a class="btn purple" href="https://stan.store/feminine_dating/p/get-married-in-1-year-in-4-monthly-instalments" target="_blank" rel="noopener">
+              4 × €644 →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="testimonials" aria-labelledby="t-title">
+      <div class="t-wrap">
+        <div class="t-head">
+          <h2 id="t-title">✨ Testimonials & Stories of Success</h2>
+          <p>Real women. Real results. Let their journeys inspire your next step.</p>
+        </div>
+
+        <div class="t-cta">
+          <a href="https://feminine-dating-results.start.page/" target="_blank" rel="noopener">Open Full Stories in New Tab →</a>
+        </div>
+
+        <div class="t-frame">
+          <iframe
+            src="https://feminine-dating-results.start.page/"
+            title="Testimonials & Stories of Success"
+            loading="lazy"
+            allowtransparency="true"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+
+        <div class="t-cta" style="margin-top:14px">
+          <a href="https://feminine-dating-results.start.page/" target="_blank" rel="noopener">View All Success Stories →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Consultation -->
+    <section id="consultation">
+      <div class="consult">
+        <div style="font-weight:700;font-size:20px;margin-bottom:6px">Need to clarify which path is yours?</div>
+        <div style="margin-bottom:12px">Now that you’ve seen the options, you can hop on a short call and we’ll map your 12-month path to marriage 💬</div>
+        <a href="https://calendly.com/feminine-enchantress/30min/" target="_blank" rel="noopener">Book your 30-min Call →</a>
+      </div>
+    </section>
   </div>
 
   <footer>
-    Enrollment closes on 01.11 when the timer hits zero 💜
+    Enrollment closes on 05.11 when the timer hits zero 💜
   </footer>
 
   <script src="https://player.vimeo.com/api/player.js"></script>
   <script>
-  // global countdown
+  // global countdown (you can keep this, it's independent of the show-more logic)
   const EXPIRY_ISO = '2025-11-01T23:59:59+01:00';
   const expiryTs = new Date(EXPIRY_ISO).getTime();
   const $count = document.getElementById('countdown');
@@ -275,44 +375,15 @@
   update();
   setInterval(update, 1000);
 
-  // unlock flow (15 minutes)
-  const FIFTEEN_MIN = 15 * 60 * 1000;
+  // simple show-me-more (no timer)
   const $revealBtn = document.getElementById('reveal-btn');
-  const $unlockPanel = document.getElementById('unlock-panel');
-  const $unlockTimer = document.getElementById('unlock-timer');
   const $offersWrapper = document.getElementById('offers-wrapper');
 
-  let userClickedToSeeMore = false;
-  let unlockTime = Date.now() + FIFTEEN_MIN;
-  let unlocked = false;
-
   $revealBtn.addEventListener('click', () => {
-    userClickedToSeeMore = true;
-    $unlockPanel.style.display = 'block';
-    window.scrollTo({ top: $unlockPanel.offsetTop - 12, behavior: 'smooth' });
+    $offersWrapper.style.display = 'block';
+    // scroll to offers
+    window.scrollTo({ top: $offersWrapper.offsetTop - 16, behavior: 'smooth' });
   });
-
-  function updateUnlockTimer(){
-    if(unlocked) return;
-    const now = Date.now();
-    const diff = unlockTime - now;
-    if(diff <= 0){
-      unlocked = true;
-      if(userClickedToSeeMore){
-        $offersWrapper.style.display = 'block';
-        $unlockPanel.style.display = 'none';
-        window.scrollTo({ top: $offersWrapper.offsetTop - 16, behavior: 'smooth' });
-      } else {
-        $unlockTimer.textContent = 'Unlocked — click “Show me more”';
-      }
-      return;
-    }
-    const mins = Math.floor(diff / 60000);
-    const secs = Math.floor((diff % 60000) / 1000);
-    $unlockTimer.textContent = pad(mins) + ':' + pad(secs);
-  }
-
-  setInterval(updateUnlockTimer, 1000);
   </script>
 </body>
 </html>
