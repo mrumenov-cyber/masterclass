@@ -342,8 +342,8 @@
 
   <script src="https://player.vimeo.com/api/player.js"></script>
   <script>
-  // global countdown (you can keep this, it's independent of the show-more logic)
-  const EXPIRY_ISO = '2025-11-01T23:59:59+01:00';
+  // global countdown: access until end of day 05.11.2025 (CET)
+  const EXPIRY_ISO = '2025-11-05T23:59:59+01:00';
   const expiryTs = new Date(EXPIRY_ISO).getTime();
   const $count = document.getElementById('countdown');
   const $overlay = document.getElementById('expired-overlay');
@@ -375,13 +375,12 @@
   update();
   setInterval(update, 1000);
 
-  // simple show-me-more (no timer)
+  // simple show-me-more (no inner timer)
   const $revealBtn = document.getElementById('reveal-btn');
   const $offersWrapper = document.getElementById('offers-wrapper');
 
   $revealBtn.addEventListener('click', () => {
     $offersWrapper.style.display = 'block';
-    // scroll to offers
     window.scrollTo({ top: $offersWrapper.offsetTop - 16, behavior: 'smooth' });
   });
   </script>
