@@ -189,7 +189,7 @@
     <div class="countdown-box" id="countdown">Loading...</div>
     <h1 class="hero-title">How to Get Married in 1 Year or less in 2026?</h1>
     <p class="hero-sub">Even if you have been unlucky in love, even if you never dated, even if you think you are too old, even if you just broke up..</p>
-    <div class="deadline">Enrollment is open until 05.11</div>
+    <div class="deadline">Next group starts on 22.01.2026 ✨ Enrollment closes 21.01.2026</div>
   </header>
 
   <!-- Video -->
@@ -222,24 +222,25 @@
           <h2><span class="badge silver">SILVER PACKAGE</span> Get Married in 1 Year — Silver</h2>
           <div class="crown" aria-hidden="true"></div>
         </div>
-        <div class="subtitle">Structured guidance, deep feminine shifts, and a supportive circle to keep you consistent and inspired.</div>
+        <div class="subtitle">Structured guidance, gentle momentum, and a dedicated space to stay consistent, supported, and inspired.</div>
 
         <div class="features">
           <div class="why-box">
             What you receive inside Silver:
             <ul style="margin:8px 0 0 18px">
-              <li><strong>✨ 3 months inside a guided group coaching container</strong> — designed to build lasting confidence, magnetic feminine energy, and deep emotional safety.</li>
-              <li><strong>💬 Wednesday is our sacred “Support Day” on Telegram</strong> — your space to be seen, heard, and guided through anything that comes up, with personal feedback and loving support.</li>
-              <li><strong>🎥 3 LIVE Zoom calls</strong> (one per month) — for transformation, clarity, and integration that help you embody everything you’re learning with ease.</li>
-              <li><strong>❤️ We help you vet men</strong> — so you no longer waste time or energy on unavailable men, even if you used to attract them before.</li>
+              <li><strong>💬 6 Telegram VIP Days (2× per month)</strong> — your sacred check-in days to ask questions, be seen, and receive personalised feedback.</li>
+              <li><strong>🎥 2 LIVE Group Zoom Calls</strong> — targeted coaching + integration to keep you clear, feminine, and on track.</li>
+              <li><strong>📝 Dating Profile Audit</strong> — we refine your photos and bio so your essence shines and the right men lean in.</li>
+              <li><strong>👭 Dedicated Silver Group</strong> — a focused, encouraging circle of women with your same intention.</li>
+              <li><strong>🛡️ Limited Vetting Support</strong> — light protection and perspective so you don’t waste time on the wrong men.</li>
             </ul>
           </div>
 
           <ul style="margin:12px 0 0 18px">
-            <li>Learn emotional communication that evokes pursuit and care</li>
-            <li>Rebuild trust and self-worth after disappointment</li>
-            <li>Meet like-minded women who share your values and goals</li>
-            <li>Steady guidance that keeps you grounded, feminine, and hopeful</li>
+            <li>Emotional communication that evokes pursuit and care</li>
+            <li>Steady shifts in self-worth, trust, and feminine magnetism</li>
+            <li>Consistency and accountability without overwhelm</li>
+            <li>Clear next steps so you always know what to do next</li>
           </ul>
         </div>
 
@@ -247,10 +248,10 @@
           <div class="divider">Choose your plan</div>
           <div class="cta-row">
             <a class="btn" href="https://stan.store/feminine_dating/p/get-married-in-1-year-silver" target="_blank" rel="noopener">
-              €1,111 Pay in Full →
+              €1,222 Pay in Full →
             </a>
             <a class="btn alt" href="https://stan.store/feminine_dating/p/get-married-in-1-year-silver--in-4-instalments" target="_blank" rel="noopener">
-              4 × €333 →
+              4 × €355 →
             </a>
           </div>
         </div>
@@ -337,13 +338,13 @@
   </div>
 
   <footer>
-    Enrollment closes on 05.11 when the timer hits zero 💜
+    Enrollment closes on 21.01.2026 when the timer hits zero 💜
   </footer>
 
   <script src="https://player.vimeo.com/api/player.js"></script>
   <script>
-  // global countdown: access until end of day 05.11.2025 (CET)
-  const EXPIRY_ISO = '2025-11-05T23:59:59+01:00';
+  // Countdown: access until end of day 21.01.2026 (CET), starts 22.01.2026
+  const EXPIRY_ISO = '2026-01-21T23:59:59+01:00';
   const expiryTs = new Date(EXPIRY_ISO).getTime();
   const $count = document.getElementById('countdown');
   const $overlay = document.getElementById('expired-overlay');
@@ -366,7 +367,7 @@
     const expired = remaining <= 0;
     if(expired){
       $count.textContent = 'Expired';
-      $overlay.style.display = 'flex';
+      if($overlay){ $overlay.style.display = 'flex'; }
       if(player){ player.pause().catch(()=>{}).finally(()=>{ if(player.unload) player.unload(); }); }
     } else {
       $count.textContent = formatRemaining(remaining);
@@ -375,7 +376,7 @@
   update();
   setInterval(update, 1000);
 
-  // simple show-me-more (no inner timer)
+  // "Show me more"
   const $revealBtn = document.getElementById('reveal-btn');
   const $offersWrapper = document.getElementById('offers-wrapper');
 
